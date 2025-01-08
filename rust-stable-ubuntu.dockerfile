@@ -10,7 +10,7 @@ RUN /usr/bin/zsh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@m
 
 RUN echo '. "$HOME/.cargo/env"' >> $HOME/.zshrc
 
-RUN echo 'export PATH="$HOME/.cargo/bin:$PATH"' > $HOME/.cargo/env
+RUN mkdir -p $HOME/.cargo && echo 'export PATH="$HOME/.cargo/bin:$PATH"' > $HOME/.cargo/env
 
 RUN /usr/bin/zsh -c "source ~/.zshrc"
 
