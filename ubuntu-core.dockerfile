@@ -1,8 +1,8 @@
-FROM ubuntu:latest
+FROM ubuntu:rolling
 
 RUN apt update -y  && apt install -y curl sudo
 
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/HYwooo/install/master/aptmirror.sh)"
+RUN sh -c "$(curl -fsSL https://cdn.jsdelivr.com/gh/HYwooo/install@master/aptmirror.sh)"
 
 RUN apt install -y gcc g++ git zsh fonts-powerline
 
