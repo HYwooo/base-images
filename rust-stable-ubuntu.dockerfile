@@ -1,4 +1,4 @@
-FROM hywooo/core-ubuntu-rolling:latest
+FROM hywooo/core-ubuntu-rolling:v0.0.2
 
 RUN sudo apt install -y coreutils ca-certificates --quiet --no-install-recommends
 
