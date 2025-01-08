@@ -20,9 +20,9 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 RUN sed -i 's/^ZSH_THEME=.*/ZSH_THEME="materialshell\/materialshell"/' ~/.zshrc && \
     sed -i 's/^plugins=.*/plugins=(git rust python zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
 
-RUN eval "$(curl https://get.x-cmd.com)" && \
-    echo "[ ! -f \"\$HOME/.x-cmd.root/X\" ] || . \"\$HOME/.x-cmd.root/X\" " >> ~/.zshrc && \
-    echo ". \"\$HOME/.cargo/env\"" >> ~/.zshrc 
+# RUN eval "$(curl https://get.x-cmd.com)" && echo "[ ! -f \"\$HOME/.x-cmd.root/X\" ] || . \"\$HOME/.x-cmd.root/X\" " >> ~/.zshrc
+    
+RUN echo ". \"\$HOME/.cargo/env\"" >> ~/.zshrc 
 
 RUN chsh -s $(which zsh)
 
