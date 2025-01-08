@@ -4,9 +4,7 @@ RUN apt update -y  && apt install -y curl sudo
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/HYwooo/install/master/aptmirror.sh)"
 
-RUN sed -i 's/http:/https:/g' /etc/apt/sources.list.d/ubuntu.sources
-
-RUN apt install -y git zsh fonts-powerline
+RUN apt install -y gcc g++ git zsh fonts-powerline
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
