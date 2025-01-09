@@ -5,7 +5,7 @@ RUN apt update -y && apt install -y curl ca-certificates sudo --quiet --no-insta
 RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
 RUN apt install -y git zsh --quiet --no-install-recommends && chsh -s $(which zsh) && \
-    echo "SHELL=$(which zsh)" >>~/.zshrc && ln -fs /usr/bin/zsh /bin/sh && ln -fs /usr/bin/zsh sh 
+    echo "SHELL=$(which zsh)" >>~/.zshrc && ln -fs $(which zsh) /bin/sh && ln -fs $(which zsh) /usr/bin/sh 
 
 RUN $(which zsh) -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -16,7 +16,7 @@ RUN sed -i 's/^ZSH_THEME=.*/ZSH_THEME="candy"/' ~/.zshrc && \
     sed -i 's/^plugins=.*/plugins=(git rust python zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc && \
     echo "export TERM=xterm-256color" >>~/.zshrc
 
-RUN source ~/.zshrc
+RUN $(which zsh) -c "source ~/.zshrc"
 
 WORKDIR /root
 
