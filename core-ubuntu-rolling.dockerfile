@@ -5,7 +5,7 @@ RUN apt update -y && apt install -y curl ca-certificates sudo --quiet --no-insta
 RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
 RUN apt install -y git zsh --quiet --no-install-recommends && chsh -s $(which zsh) && \
-    echo "SHELL=$(which zsh)" >>~/.zshrc && ln -fs $(which zsh) /bin/sh && ln -fs $(which zsh) /usr/bin/sh 
+    echo "SHELL=$(which zsh)" >>~/.zshrc 
 
 RUN $(which zsh) -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -20,4 +20,4 @@ RUN $(which zsh) -c "source ~/.zshrc"
 
 WORKDIR /root
 
-CMD ["/bin/sh"]
+CMD ["/usr/bin/zsh"]
