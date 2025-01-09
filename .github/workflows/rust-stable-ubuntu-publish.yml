@@ -78,31 +78,13 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          # push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' }}
           # disable push before slim
-          push: false
+          # push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           file: rust-stable-ubuntu.dockerfile
     
-      # Slim it!
-      - name: Slim the image
-        uses: kitabisa/docker-slim-action@v1
-        env:
-          DSLIM_HTTP_PROBE: false
-        with:
-          target: ${{ steps.meta.outputs.tags }}
-          tag: "slim"
-          
-      - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
-      # Push to the registry
-      - run: docker image push ${{ env.IMAGE_NAME }} --all-tags
+     
