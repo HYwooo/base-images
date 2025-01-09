@@ -8,4 +8,4 @@ RUN /usr/bin/zsh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@m
 
 WORKDIR /root
 
-ENTRYPOINT ["/usr/bin/zsh"] 
+CMD ["/usr/bin/zsh"] 
