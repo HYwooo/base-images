@@ -1,11 +1,11 @@
 FROM hywooo/core-ubuntu-rolling:latest
 
-RUN sudo apt install -y coreutils ca-certificates --quiet --no-install-recommends
+RUN apt install -y coreutils ca-certificates --quiet --no-install-recommends
 
-RUN /usr/bin/zsh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/aptmirror.sh)"
+RUN $(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)
 
-RUN /usr/bin/zsh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/install-rust.sh)"
+RUN $(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/install-rust.sh)
 
 WORKDIR /root
 
-CMD ["/usr/bin/zsh"] 
+CMD ["/bin/sh"] 

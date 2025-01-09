@@ -2,11 +2,11 @@ FROM ubuntu:rolling
 
 RUN apt update -y && apt install -y curl ca-certificates sudo --quiet --no-install-recommends
 
-RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
+RUN $(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)
 
 RUN apt install -y git zsh --quiet --no-install-recommends && chsh -s /usr/bin/zsh && ln -fs /usr/bin/zsh /bin/sh
 
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUN $(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)
 
 ENV SHELL=/usr/bin/zsh
 
