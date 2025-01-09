@@ -1,6 +1,6 @@
 FROM ubuntu:rolling
 
-RUN apt update -y && apt install -y curl ca-certificates sudo --quiet --no-install-recommends
+RUN apt update -y && apt install -y curl sudo --quiet --no-install-recommends
 
 RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
