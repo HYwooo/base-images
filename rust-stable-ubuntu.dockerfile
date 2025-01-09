@@ -1,6 +1,6 @@
 FROM hywooo/core-ubuntu-rolling:latest
 
-RUN $(which zsh) -c "apt install -y coreutils --quiet --no-install-recommends"
+RUN $(which zsh) -c "apt install -y --quiet --no-install-recommends coreutils ca-certificates "
 
 RUN $(which zsh) -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
