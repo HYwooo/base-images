@@ -1,4 +1,4 @@
-name: rust-stable-ubuntu Monthly publish
+name: rust-stable-ubuntu-publish
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -8,7 +8,7 @@ name: rust-stable-ubuntu Monthly publish
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: [core-ubuntu-rolling-Monthly-publish]
+    workflows: [core-ubuntu-rolling-publish]
     types:
       - completed
   #schedule:
