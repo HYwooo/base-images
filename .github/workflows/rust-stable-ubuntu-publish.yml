@@ -95,6 +95,14 @@ jobs:
         with:
           target: ${{ steps.meta.outputs.tags }}
           tag: "slim"
-
+          
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
       # Push to the registry
-      - run: docker image push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} --all-tags
+      - run: docker image push ${{ env.IMAGE_NAME }} --all-tags
