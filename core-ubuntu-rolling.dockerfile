@@ -1,28 +1,24 @@
 FROM ubuntu:rolling
 
-RUN apt update -y  && apt install -y curl ca-certificates sudo --quiet --no-install-recommends
+RUN apt update -y && apt install -y curl ca-certificates sudo --quiet --no-install-recommends
 
 RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
-RUN apt install -y git zsh fonts-powerline
+RUN apt install -y git zsh --quiet --no-install-recommends && chsh -s /usr/bin/zsh && ln -s /usr/bin/zsh /bin/sh
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ENV SHELL=/usr/bin/zsh
 
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting && \
-    git clone https://github.com/carloscuesta/materialshell.git ~/.oh-my-zsh/custom/themes/materialshell
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-RUN sed -i 's/^ZSH_THEME=.*/ZSH_THEME="materialshell\/materialshell"/' ~/.zshrc && \
+RUN sed -i 's/^ZSH_THEME=.*/ZSH_THEME="candy"/' ~/.zshrc && \
     sed -i 's/^plugins=.*/plugins=(git rust python zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc && \
-    echo "export TERM=xterm-256color" >> ~/.zshrc && \
-    echo "alias /bin/sh=/usr/bin/zsh /usr/bin/sh=/usr/bin/zsh" >> ~/.zshrc && echo "alias /bin/sh=/usr/bin/zsh /usr/bin/sh=/usr/bin/zsh" >> ~/.bashrc
+    echo "export TERM=xterm-256color" >>~/.zshrc
 
-RUN echo "chsh -s /usr/bin/zsh" >> ~/.bashrc && . ~/.bashrc
-
-RUN /usr/bin/zsh -c "source ~/.zshrc"
+RUN source ~/.zshrc
 
 WORKDIR /root
 
-ENTRYPOINT ["/usr/bin/zsh"] 
+CMD ["/bin/sh"]
