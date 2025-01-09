@@ -7,7 +7,7 @@ FROM ubuntu:rolling
 RUN apt update -y && apt install -y ca-certificates curl sudo --quiet --no-install-recommends
 
 # Run a custom script to configure apt mirrors for faster package downloads
-RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
+RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@latest/mirror-apt.sh)"
 
 # Install Git and Zsh, set Zsh as the default shell, and configure the SHELL environment variable
 RUN apt install -y git zsh --quiet --no-install-recommends && chsh -s $(which zsh) && \
