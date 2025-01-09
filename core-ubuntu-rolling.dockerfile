@@ -17,9 +17,9 @@ RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.
 RUN sed -i 's/^ZSH_THEME=.*/ZSH_THEME="materialshell\/materialshell"/' ~/.zshrc && \
     sed -i 's/^plugins=.*/plugins=(git rust python zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc && \
     echo "export TERM=xterm-256color" >> ~/.zshrc && \
-    echo "alias /bin/sh=/usr/bin/zsh /usr/bin/sh=/usr/bin/zsh" >> ~/.zshrc && alias /bin/sh=/usr/bin/zsh /usr/bin/sh=/usr/bin/zsh
+    echo "alias /bin/sh=/usr/bin/zsh /usr/bin/sh=/usr/bin/zsh" >> ~/.zshrc && echo "alias /bin/sh=/usr/bin/zsh /usr/bin/sh=/usr/bin/zsh" >> ~/.bashrc
 
-RUN chsh -s /usr/bin/zsh
+RUN echo "chsh -s /usr/bin/zsh" >> ~/.bashrc && . ~/.bashrc
 
 RUN /usr/bin/zsh -c "source ~/.zshrc"
 
