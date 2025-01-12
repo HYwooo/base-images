@@ -1,15 +1,14 @@
-name: core-ubuntu-rolling-publish
+name: core-ubuntu-rolling-nightly-publish
 
 on:
-  workflow_dispatch:
-  # schedule:
-    # - cron: '0 8 10 * *'
-  push:
+  # workflow_dispatch:
+  # Nightly build
+  schedule:
+    - cron: '0 8 * * *'
+  # push:
     # branches: [ "master" ]
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
-    # paths:
-      # - 'core-ubuntu-rolling.dockerfile'
+    # tags: [ 'v*.*.*' ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -76,5 +75,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          file: core-ubuntu-rolling.dockerfile
+          file: core-ubuntu-rolling-nightly.dockerfile
 
