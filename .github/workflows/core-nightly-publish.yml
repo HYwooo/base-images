@@ -1,7 +1,7 @@
 name: core-ubuntu-rolling-nightly-publish
 
 on:
-  # workflow_dispatch:
+  workflow_dispatch:
   # Nightly build
   schedule:
     - cron: '0 16 * * *'
