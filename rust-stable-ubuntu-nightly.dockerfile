@@ -1,4 +1,4 @@
-FROM hywooo/core-ubuntu-rolling:nightly
+FROM hywooo/core-ubuntu-rolling:master
 
 RUN $(which zsh) -c "apt install -y coreutils ca-certificates --no-install-recommends "
 
