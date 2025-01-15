@@ -3,15 +3,15 @@ name: rust-stable-ubuntu-nightly-publish
 on:
   # workflow_dispatch:
   # schedule:
-    # - cron: '0 17 * * *'
+    # - cron: '0 17 11 * *'
   # push:
     # branches: [ "master" ]
     # Publish semver tags as releases.
     # tags: [ 'v*.*.*' ]
-  workflow_run:
-    workflows: [core-ubuntu-rolling-nightly-publish]
-    types:
-      - completed  
+  # workflow_run:
+    # workflows: [core-ubuntu-rolling-nightly-publish]
+    # types:
+     #  - completed  
 
 env:
   # Use docker.io for Docker Hub if empty
