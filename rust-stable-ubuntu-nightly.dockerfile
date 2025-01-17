@@ -4,7 +4,7 @@ RUN $(which zsh) -c "apt install coreutils ca-certificates rustup --no-install-r
 
 RUN $(which zsh) -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
-RUN $(which zsh) -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/install-rust.sh)"
+RUN $(which zsh) -c "$(curl -fsSL https://raw.githubusercontent.com/HYwooo/install/refs/heads/master/install-rust.sh)"
 
 RUN $(which zsh) -c "rustup && rustc && cargo"
 
