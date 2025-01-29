@@ -1,6 +1,6 @@
 FROM hywooo/core-ubuntu-rolling:master
 
-RUN apt install coreutils ca-certificates --no-install-recommends -y"
+RUN apt install coreutils ca-certificates --no-install-recommends -y
 
 RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
