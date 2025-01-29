@@ -10,7 +10,7 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/HYwooo/install/refs/
     rustc --version && \
     cargo --version
 
-RUN bash -c 'rustup && rustc && cargo && cargo install lsd && lsd -a'
+RUN cargo install lsd && lsd -a
 
 WORKDIR /root
 
