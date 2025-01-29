@@ -1,11 +1,15 @@
-FROM hywooo/core-ubuntu-rolling:latest
+FROM hywooo/core-ubuntu-rolling:master
 
-RUN $(which zsh) -c "apt install -y --no-install-recommends coreutils ca-certificates "
+RUN apt install -y coreutils ca-certificates --no-install-recommends --quiet
 
-RUN $(which zsh) -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@latest/mirror-apt.sh)"
+RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
-RUN $(which zsh) -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@latest/install-rust.sh)"
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/HYwooo/install/refs/heads/master/install-rust.sh)" && \
+    . $HOME/.cargo/env && \
+    rustup --version && \
+    rustc --version && \
+    cargo --version
 
 WORKDIR /root
 
-CMD ["/usr/bin/zsh"] 
+CMD ["/bin/bash"] 

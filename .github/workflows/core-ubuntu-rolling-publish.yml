@@ -2,14 +2,10 @@ name: core-ubuntu-rolling-publish
 
 on:
   workflow_dispatch:
-  # schedule:
-    # - cron: '0 8 10 * *'
   push:
     # branches: [ "master" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
-    # paths:
-      # - 'core-ubuntu-rolling.dockerfile'
 
 env:
   # Use docker.io for Docker Hub if empty

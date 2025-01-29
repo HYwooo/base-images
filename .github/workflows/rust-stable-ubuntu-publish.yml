@@ -2,6 +2,9 @@ name: rust-stable-ubuntu-publish
 
 on:
   workflow_dispatch:
+  # Schedule the workflow to run daily at 5pm UTC
+  # schedule:
+     # - cron: '0 17 * * *'
   push:
     # branches: [ "master" ]
     # Publish semver tags as releases.
