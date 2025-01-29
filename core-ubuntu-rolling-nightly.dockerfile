@@ -5,7 +5,7 @@ FROM ubuntu:rolling
 RUN apt -y update  && apt install curl sudo ca-certificates -y --quiet --no-install-recommends
 
 # Run a custom script to configure apt mirrors for faster package downloads
-RUN sh -c "$(curl  -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
+RUN curl  -sSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh | sh
 
 # Set the working directory to /root
 WORKDIR /root
