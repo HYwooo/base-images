@@ -5,13 +5,12 @@ FROM ubuntu:rolling
 RUN apt update -y && apt install curl sudo ca-certificates -y --quiet --no-install-recommends
 
 # Run a custom script to configure apt mirrors for faster package downloads
-RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
+RUN sh -c "$(curl  -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
 # Install Git and Zsh, set Zsh as the default shell, and configure the SHELL environment variable
-RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/install-zsh.sh)"
+# RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/install-zsh.sh)"
 
 # Set the working directory to /root
 WORKDIR /root
 
-# Set Zsh as the default command when the container starts
-CMD ["/usr/bin/zsh"]
+CMD ["/bin/bash"]

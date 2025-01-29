@@ -1,13 +1,13 @@
 FROM hywooo/core-ubuntu-rolling:master
 
-RUN $(which zsh) -c "apt install coreutils ca-certificates rustup --no-install-recommends -y"
+RUN apt install coreutils ca-certificates --no-install-recommends -y"
 
-RUN $(which zsh) -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
+RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/mirror-apt.sh)"
 
-RUN $(which zsh) -c "$(curl -fsSL https://raw.githubusercontent.com/HYwooo/install/refs/heads/master/install-rust.sh)"
+RUN sh -c "$(curl -fsSL https://gcore.jsdelivr.net/gh/HYwooo/install@master/install-rust.sh)"
 
-RUN $(which zsh) -c "rustup && rustc && cargo"
+RUN rustup && rustc && cargo && cargo install lsd && lsd -a
 
 WORKDIR /root
 
-CMD ["/usr/bin/zsh"] 
+CMD ["/bin/bash"] 
